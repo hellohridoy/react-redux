@@ -79,6 +79,15 @@ const mainReducer = combineReducers({
   cake: cakeReducer,
   iceCream: iceCreamReducer,
 });
+
+//  [ Action ] <-> [ Middleware ] <-> [ Dispatcher ]
+
+// Middleware provides a third party extension point between dispatching an action and handing the action off to the reducer
+
+//Examples of middleware include logging, crash reporting, routing, handling asynchronous requests, etc.
+
+//Let's take the case of handling asynchronous requests, like an HTTP call to a server. Middleware is a great spot to do this.
+
 const store = createStore(mainReducer, applyMiddleware(logger));
 console.log("Initial State ", store.getState());
 const unsubscribe = store.subscribe(() => {});
